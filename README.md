@@ -1,3 +1,3 @@
 # Algorithms
 
-factral dimension algorithm
+fractal dimension algorithm
