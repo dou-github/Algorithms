@@ -22,4 +22,3 @@ end
 
 APPEN = res(1) - res(2);
    
-        
