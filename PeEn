@@ -1,0 +1,30 @@
+% permutation entropy
+function PeEN = PeEn(data, m, L)
+
+allper = perms(1:m);
+
+N = length(data);
+
+k = N-(m-1)*L;
+
+for i = 1:k
+    for j = 1:m
+        x(i,j) = data(i+(j-1)*L);
+    end
+end
+[x_sorted,idx] = sort(x,2);
+
+countall = zeros(length(allper),1);
+for ii = 1:k
+    for allm = 1:length(allper)
+        if abs(allper(allm,:) - idx(ii,:)) == 0
+            countall(allm) = countall(allm) + 1;
+        end       
+    end
+end
+
+c = countall(find(countall~=0));
+
+p = c/sum(c);
+PeEN = -sum(p.*log(p));
+end
